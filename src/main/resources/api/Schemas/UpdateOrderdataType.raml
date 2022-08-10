@@ -1,0 +1,14 @@
+#%RAML 1.0 DataType
+properties:
+          productName:
+            type: string
+            required: true
+            minLength: 3
+            maxLength: 10
+          quantityAvailable:
+            type: number
+            enum:
+              - 0
+          pricePerItem:
+            type: number
+            required: false
