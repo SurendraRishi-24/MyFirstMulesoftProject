@@ -1,0 +1,66 @@
+#%RAML 1.0
+title: NagaSessions2
+
+/OrderDetails:
+  get:    
+    responses:
+      200: 
+         body:
+           application/json:
+             example: !include Examples/OrderDetailsexample.raml
+
+/getOrderDetails/{orderId}:
+  /{id}:    
+  /{orderType}:
+  get:
+        responses:
+              200:
+                    body:
+                          application/json:
+                               example: !include Examples/GetOrderDetailsexample.raml
+                                  
+
+/createOrder:
+  post:
+    queryParameters:
+      orderType:
+        required: true
+    body:
+      application/json:
+        type: !include Schemas/CreateOrderdataType.raml
+    responses:
+      201:
+            body:
+              application/json:                   
+                  example: !include Examples/CreateOrderexample.raml
+                    
+
+/updateOrder:
+  put:
+    queryParameters:
+      orderId:
+        required: true
+      orderType:
+        required: true
+    body:
+            application/json:
+              type: !include Schemas/UpdateOrderdataType.raml
+    responses:
+      202:
+        body:
+          application/json:
+            example: !include Examples/UpdateOrderexample.raml
+              
+  delete:
+    queryParameters:
+      orderId:
+        required: true
+    responses:
+          200:
+                body:
+                      application/json:
+                           example: !include Examples/DeleteOrderexample.raml
+                              
+
+
+                                                  
